@@ -11,14 +11,14 @@ export class LoginPage extends BasePage {
   constructor(page: Page) {
     super(page);
 
-    this.usernameInput = page.locator('input[name="username"]');
-    this.passwordInput = page.locator('input[name="password"]');
-    this.loginButton = page.locator('button[type="submit"]');
+    this.usernameInput = this.page.locator('input[name="username"]');
+    this.passwordInput = this.page.locator('input[name="password"]');
+    this.loginButton = this.page.locator('button[type="submit"]');
   }
 
   // Navigation
   async open(): Promise<void> {
-    await this.goto("/");
+    await this.goto();
   }
 
   // Business Actions
