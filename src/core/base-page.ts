@@ -1,5 +1,5 @@
-import { Page } from "@playwright/test";
 import { NavigationAction, WaitAction } from "../actions";
+import { BaseComponent } from "./base-component";
 
 /**
  * Base class for all Page Objects.
@@ -9,9 +9,7 @@ import { NavigationAction, WaitAction } from "../actions";
  * - Page Information
  * - Synchronization
  */
-export class BasePage {
-  constructor(protected readonly page: Page) {}
-
+export abstract class BasePage extends BaseComponent {
   // ============================
   // Navigation
   // ============================
