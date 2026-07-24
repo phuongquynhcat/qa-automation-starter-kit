@@ -1,158 +1,218 @@
-# QA Automation Starter Kit Architecture
+QA Automation Starter Kit Architecture
 
-## Purpose
+1. Vision
+   Mục tiêu
 
-QA Automation Starter Kit được xây dựng để giúp Manual Tester và Automation Tester phát triển một framework kiểm thử tự động theo chuẩn, sử dụng Playwright, TypeScript và AI hỗ trợ.
+QA Automation Starter Kit là một framework độc lập, có thể được clone sang bất kỳ dự án nào để phát triển automation testing mà không phụ thuộc vào source code của frontend hoặc backend.
 
-Mục tiêu của Starter Kit không chỉ là viết automation test mà còn chuẩn hóa toàn bộ quy trình từ Requirement đến Release.
+Framework được thiết kế với ba mục tiêu:
 
----
+Reusable
+Maintainable
+AI Friendly
 
-# Design Principles
+Framework không phục vụ một hệ thống cụ thể mà phục vụ mọi hệ thống.
 
-Framework được thiết kế dựa trên các nguyên tắc sau:
+2. Design Principles
 
-## 1. Simplicity First
+Framework được xây dựng theo các nguyên tắc sau:
 
-Ưu tiên cấu trúc đơn giản.
+2.1 Zero Business Knowledge
 
-Không tạo thư mục hoặc thành phần khi chưa có nhu cầu thực tế.
-
----
-
-## 2. Incremental Growth
-
-Framework được mở rộng theo từng Sprint.
-
-Chỉ bổ sung module mới khi thực sự cần.
-
----
-
-## 3. Separation of Concerns
-
-Mỗi thư mục chỉ có một trách nhiệm.
+Framework không được chứa bất kỳ nghiệp vụ nào.
 
 Ví dụ:
 
-- pages chỉ chứa Page Object
-- utils chỉ chứa hàm dùng chung
-- config chỉ chứa cấu hình
+❌ Không được có
 
----
+LoginPage
+DashboardPage
+EmployeePage
+OrangeHRM
+Admin
 
-## 4. Reusability
+Framework chỉ được chứa:
 
-Mọi thành phần đều hướng đến khả năng tái sử dụng.
+BasePage
+BaseComponent
+BaseTest
+Config
+Logger
+Utilities
+Helpers
+Services
 
-Không lặp lại code.
+2.2 Reusable
 
----
+Mọi module trong framework phải có thể tái sử dụng cho mọi dự án.
 
-## 5. Maintainability
+Nếu một module chỉ dùng được cho một hệ thống thì nó không thuộc Starter Kit.
 
-Framework phải dễ đọc, dễ sửa và dễ mở rộng.
+2.3 AI First
 
-Người mới có thể hiểu cấu trúc trong thời gian ngắn.
+Framework phải được thiết kế để Claude AI hoặc ChatGPT có thể:
 
----
+hiểu kiến trúc
+sinh code
+review code
+tái sử dụng template
 
-## 6. AI Friendly
+mà không cần giải thích nhiều lần.
 
-Toàn bộ cấu trúc, quy ước và tài liệu được chuẩn hóa để AI (Claude hoặc ChatGPT) có thể:
+3. Architecture Layers
 
-- phân tích requirement
-- sinh checklist
-- sinh test case
-- sinh Page Object
-- sinh Playwright code
+Framework được chia thành hai tầng.
 
-một cách nhất quán.
+Layer 1 — Framework
+src/
 
----
+config/
+core/
+components/
+helpers/
+utils/
+fixtures/
+services/
+logger/
+assertions/
+constants/
+types/
 
-# Framework Layers
+Đây là phần không thay đổi giữa các dự án.
 
-Framework được chia thành các tầng.
+Layer 2 — Project
 
-Requirement
+Khi clone Starter Kit sang công ty sẽ sinh:
+
+pages/
+components/
+tests/
+test-data/
+resources/
+
+Đây là phần phụ thuộc vào nghiệp vụ.
+
+Không thuộc Starter Kit.
+
+4. Repository Structure
+   qa-automation-starter-kit/
+
+src/
+docs/
+ai/
+
+README.md
+package.json
+playwright.config.ts
+
+Starter Kit không chứa Page Object của một hệ thống cụ thể.
+
+5. Clone Workflow
+   Starter Kit
 
 ↓
 
-QA Process
+Clone Repository
 
 ↓
 
-Automation Framework
+Rename Repository
 
 ↓
 
-Playwright
+Config .env
 
 ↓
 
-Browser
+Create Pages
 
 ↓
 
-Application
+Create Tests
 
 ↓
 
-Report
+Run Automation
 
----
+Không cần clone frontend.
 
-# Project Structure
+Không cần clone backend.
 
-Project được chia thành ba phần chính.
+6. Module Development Rule
 
-## AI
+Mỗi module phải có đầy đủ:
 
-Chứa prompt, command, template và rule dành cho AI.
+Code
 
-## Documentation
+↓
 
-Chứa tài liệu thiết kế, tiêu chuẩn và quy trình.
+Documentation
 
-## Source Code
+↓
 
-Chứa framework automation.
+AI Rule
 
----
+Ví dụ:
 
-# Architecture Evolution
+src/config/
 
-Framework không được xây đầy đủ ngay từ đầu.
+↓
 
-Nó phát triển theo từng Sprint.
+docs/modules/config.md
 
-Sprint 1
+↓
 
-Foundation
+docs/ai/config.rule.md
 
-Sprint 2
+7. File Classification
+
+Trước khi tạo một file mới phải trả lời:
+
+File này thuộc Framework hay Project?
+
+Ví dụ:
 
 Framework
 
-Sprint 3
+BasePage
+BaseComponent
+Logger
+ApiClient
+RandomUtil
 
-Authentication
+Project
 
-Sprint 4
+LoginPage
+DashboardPage
+EmployeePage
+LeavePage
 
-Feature Automation
+8. Long-term Goal
 
-Sprint 5
+Sau khi hoàn thành Framework:
 
-AI Workflow & Release
+Clone Starter Kit
 
----
+↓
 
-# Goal
+Clone sang project mới
 
-Sau khi hoàn thành Starter Kit, người học có thể:
+↓
 
-- hiểu QA Automation Framework
-- xây dựng Playwright Framework
-- áp dụng AI vào Automation Testing
-- mở rộng framework cho dự án thực tế
+Claude AI
+
+↓
+
+Generate Pages
+
+↓
+
+Generate Components
+
+↓
+
+Generate Tests
+
+↓
+
+Run Playwright

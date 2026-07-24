@@ -1,28 +1,26 @@
 import { defineConfig, devices } from "@playwright/test";
-import { ENV } from "./src/config/env";
+import { ENV, CONFIG, BROWSER } from "./src/config";
+import { BROWSER_NAME } from "./src/constants";
 
 export default defineConfig({
-  testDir: "./examples/orangehrm/tests",
+  testDir: "./tests",
 
   fullyParallel: true,
 
   forbidOnly: !!process.env.CI,
 
-  retries: process.env.CI ? 2 : 0,
+  // retries: process.env.CI ? 2 : 0,
 
-  workers: process.env.CI ? 1 : undefined,
+  // workers: process.env.CI ? 1 : undefined,
 
   reporter: [["html"], ["list"]],
 
   use: {
     baseURL: ENV.BASE_URL,
 
-    headless: false,
+    headless: CONFIG.headless,
 
-    viewport: {
-      width: 1440,
-      height: 900,
-    },
+    viewport: BROWSER.viewport,
 
     trace: "on-first-retry",
 
@@ -30,14 +28,14 @@ export default defineConfig({
 
     video: "retain-on-failure",
 
-    actionTimeout: 10000,
+    actionTimeout: BROWSER.actionTimeout,
 
-    navigationTimeout: 30000,
+    navigationTimeout: BROWSER.navigationTimeout,
   },
 
   projects: [
     {
-      name: "chromium",
+      name: BROWSER_NAME.CHROMIUM,
       use: {
         ...devices["Desktop Chrome"],
       },

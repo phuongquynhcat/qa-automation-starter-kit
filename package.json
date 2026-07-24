@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "description": "QA Automation Starter Kit using Playwright, TypeScript and Claude AI",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit",
+    "lint": "...",
+    "format": "...",
+    "prepare": "playwright install"
+  },
   "keywords": [
     "playwright",
     "typescript",
@@ -14,7 +23,8 @@
   "license": "MIT",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
-    "@types/node": "^26.1.1"
+    "@types/node": "^26.1.1",
+    "typescript": "^7.0.2"
   },
   "dependencies": {
     "dotenv": "^17.4.2"
