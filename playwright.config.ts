@@ -1,5 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
-import { ENV, CONFIG, BROWSER } from "./src/config";
+import { ENV, CONFIG, BROWSER } from "./src";
 import { BROWSER_NAME } from "./src/constants";
 
 export default defineConfig({
@@ -9,9 +9,9 @@ export default defineConfig({
 
   forbidOnly: !!process.env.CI,
 
-  // retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 0,
 
-  // workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : undefined,
 
   reporter: [["html"], ["list"]],
 

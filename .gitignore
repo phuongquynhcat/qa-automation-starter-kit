@@ -7,7 +7,8 @@ node_modules/
 # Playwright
 # ==========================
 playwright-report/
-test-results
+test-results/
+blob-report/
 
 # Browser binaries (optional)
 # Uncomment if you don't want to store browsers locally
@@ -38,6 +39,7 @@ Thumbs.db
 # IDE
 # ==========================
 .vscode/settings.json
+.idea/
 
 # Keep recommended extensions
 !.vscode/extensions.json
@@ -51,3 +53,20 @@ coverage/
 # Build
 # ==========================
 dist/
+
+# ========================== 
+# Temporary 
+# ========================== 
+tmp/ 
+temp/
+
+# ========================== 
+# Cache 
+# ========================== 
+.cache/
+
+# ========================== 
+# Screenshots & Videos 
+# ========================== 
+screenshots/ 
+videos/
