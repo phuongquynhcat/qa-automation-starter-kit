@@ -1,4 +1,4 @@
-import { NavigationAction, WaitAction } from "../actions";
+import { Navigation, Wait } from "../actions";
 import { BaseComponent } from "./base-component";
 
 /**
@@ -14,19 +14,19 @@ export abstract class BasePage extends BaseComponent {
   // Navigation
   // ============================
   async goto(path = "/"): Promise<void> {
-    await NavigationAction.goto(this.page, path);
+    await Navigation.goto(this.page, path);
   }
 
   async goBack(): Promise<void> {
-    await NavigationAction.goBack(this.page);
+    await Navigation.goBack(this.page);
   }
 
   async goForward(): Promise<void> {
-    await NavigationAction.goForward(this.page);
+    await Navigation.goForward(this.page);
   }
 
   async reload(): Promise<void> {
-    await NavigationAction.reload(this.page);
+    await Navigation.reload(this.page);
   }
 
   // ============================
@@ -44,10 +44,10 @@ export abstract class BasePage extends BaseComponent {
   // Synchronization
   // ============================
   async waitForPageLoad(): Promise<void> {
-    await WaitAction.pageLoad(this.page);
+    await Wait.pageLoad(this.page);
   }
 
   async waitForNetworkIdle(): Promise<void> {
-    await WaitAction.networkIdle(this.page);
+    await Wait.networkIdle(this.page);
   }
 }

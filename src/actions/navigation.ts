@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 
-export abstract class NavigationAction {
+export abstract class Navigation {
   static async goto(page: Page, path = "/"): Promise<void> {
     await page.goto(path);
   }

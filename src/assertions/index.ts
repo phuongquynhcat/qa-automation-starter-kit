@@ -1,2 +1,1 @@
-export * from "./locator.assert";
-export * from "./page.assert";
+export * from "./assert";

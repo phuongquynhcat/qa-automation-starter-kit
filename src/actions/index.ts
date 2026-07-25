@@ -1,3 +1,4 @@
-export * from "./navigation.action";
-export * from "./wait.action";
-export * from "./locator.action";
+export * from "./navigation";
+export * from "./wait";
+export * from "./action";
+export * from "./locator-factory";

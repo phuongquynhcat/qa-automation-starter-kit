@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 
-export abstract class WaitAction {
+export abstract class Wait {
   static async pageLoad(page: Page): Promise<void> {
     await page.waitForLoadState("load");
   }

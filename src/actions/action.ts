@@ -6,7 +6,7 @@ import { Locator } from "@playwright/test";
  * This class contains reusable actions that can be shared
  * across all Page Objects.
  */
-export abstract class LocatorAction {
+export abstract class Action {
   // ============================
   // Mouse Actions
   // ============================
