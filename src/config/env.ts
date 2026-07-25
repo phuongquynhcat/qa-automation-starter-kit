@@ -3,9 +3,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const ENV = Object.freeze({
-  BASE_URL: process.env.BASE_URL ?? "",
+  BASE_URL: process.env.OHRM_BASE_URL ?? "",
 
-  USERNAME: process.env.USERNAME ?? "",
+  USERNAME: process.env.OHRM_USERNAME ?? "",
 
-  PASSWORD: process.env.PASSWORD ?? "",
+  PASSWORD: process.env.OHRM_PASSWORD ?? "",
 });

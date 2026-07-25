@@ -22,6 +22,8 @@ export default defineConfig({
 
     viewport: BROWSER.viewport,
 
+    testIdAttribute: "data-testid",
+
     trace: "on-first-retry",
 
     screenshot: "only-on-failure",
@@ -41,4 +43,8 @@ export default defineConfig({
       },
     },
   ],
+
+  expect: {
+    timeout: 5000,
+  },
 });

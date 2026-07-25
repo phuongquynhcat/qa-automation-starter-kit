@@ -7,17 +7,14 @@ export class DashboardPage extends BasePage {
   // Locators
   // ============================
 
-  private readonly dashboardTitle: Locator;
-  private readonly userDropdown: Locator;
+  private readonly _dashboardTitle: Locator;
 
   constructor(page: Page) {
     super(page);
 
-    this.dashboardTitle = LocatorFactory.byRole(page, "heading", {
+    this._dashboardTitle = LocatorFactory.byRole(page, "heading", {
       name: "Dashboard",
     });
-
-    this.userDropdown = LocatorFactory.byRole(page, "banner");
   }
 
   // ============================
@@ -32,11 +29,7 @@ export class DashboardPage extends BasePage {
   // Getters
   // ============================
 
-  getDashboardTitle(): Locator {
-    return this.dashboardTitle;
-  }
-
-  getUserDropdown(): Locator {
-    return this.userDropdown;
+  get dashboardTitle(): Locator {
+    return this._dashboardTitle;
   }
 }

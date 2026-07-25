@@ -1,8 +1,8 @@
 # QA Automation Starter Kit
 
-A reusable **Playwright + TypeScript** automation framework designed to quickly bootstrap new QA Automation projects.
+A reusable **Playwright + TypeScript** automation framework built for creating scalable, maintainable, and enterprise-ready web automation projects.
 
-The framework focuses on **maintainability**, **scalability**, and **standardized architecture**, making it suitable for enterprise automation projects.
+This starter kit provides a solid foundation with reusable components, standardized architecture, and best practices for modern QA Automation.
 
 ---
 
@@ -11,13 +11,12 @@ The framework focuses on **maintainability**, **scalability**, and **standardize
 - Playwright + TypeScript
 - Page Object Model (POM)
 - Layered Architecture
-- BasePage / BaseComponent
 - Reusable Action Layer
 - Reusable Assertion Layer
+- Locator Factory
 - Environment Configuration
 - Scalable Folder Structure
-- Claude AI Ready
-- Enterprise Project Ready
+- Enterprise Ready
 
 ---
 
@@ -29,7 +28,7 @@ The framework follows a layered architecture.
 Tests
     │
     ▼
-Pages
+Page Objects
     │
     ▼
 BasePage
@@ -38,7 +37,7 @@ BasePage
 BaseComponent
     │
     ▼
-Actions
+Action Layer
     │
     ▼
 Playwright
@@ -49,37 +48,44 @@ Playwright
 # Project Structure
 
 ```text
-src/
-├── actions/
-├── assertions/
-├── components/
-├── config/
-├── constants/
-├── core/
-├── fixtures/
-├── logger/
-├── pages/
-├── services/
-├── types/
-└── utils/
+qa-automation-starter-kit/
 
-docs/
-tests/
+├── docs/
+│
+├── src/
+│   ├── actions/
+│   ├── assertions/
+│   ├── components/
+│   ├── config/
+│   ├── constants/
+│   ├── core/
+│   ├── fixtures/
+│   ├── logger/
+│   ├── pages/
+│   ├── services/
+│   ├── types/
+│   └── utils/
+│
+├── tests/
+│
+├── .env.example
+├── package.json
+├── playwright.config.ts
+└── README.md
 ```
 
 ---
 
-# Prerequisites
+# Requirements
 
-Before getting started, make sure you have installed:
+Before getting started, install:
 
 - Node.js (LTS)
 - Git
-- Visual Studio Code (Recommended)
 
 ---
 
-# Installation
+# Quick Start
 
 Clone the repository
 
@@ -87,7 +93,7 @@ Clone the repository
 git clone <repository-url>
 ```
 
-Go to project
+Go to the project
 
 ```bash
 cd qa-automation-starter-kit
@@ -99,25 +105,61 @@ Install dependencies
 npm install
 ```
 
+Install Playwright browsers
+
+```bash
+npx playwright install
+```
+
+Create your environment file
+
+```bash
+cp .env.example .env
+```
+
+Update `.env`
+
+```env
+OHRM_BASE_URL=https://opensource-demo.orangehrmlive.com
+
+OHRM_USERNAME=Admin
+
+OHRM_PASSWORD=admin123
+```
+
+Run the first test
+
+```bash
+npm test
+```
+
+Expected output
+
+```text
+1 passed
+0 failed
+```
+
 ---
 
 # Environment
 
-Create
+The framework uses environment variables to separate configuration from source code.
 
-```text
-.env
+Example:
+
+```env
+OHRM_BASE_URL=https://opensource-demo.orangehrmlive.com
+
+OHRM_USERNAME=Admin
+
+OHRM_PASSWORD=admin123
 ```
 
-Example
-
-```text
-BASE_URL=
-
-USERNAME=
-
-PASSWORD=
-```
+> **Important**
+>
+> - Never commit your `.env` file.
+> - Commit only `.env.example`.
 
 ---
 
@@ -126,96 +168,72 @@ PASSWORD=
 Run all tests
 
 ```bash
-npx playwright test
+npm test
 ```
 
 Run in headed mode
 
 ```bash
-npx playwright test --headed
+npm run test:headed
 ```
 
-Run a specific test
+Run UI Mode
 
 ```bash
-npx playwright test tests/example.spec.ts
+npm run test:ui
+```
+
+Run Debug Mode
+
+```bash
+npm run test:debug
+```
+
+Type checking
+
+```bash
+npm run typecheck
 ```
 
 Open HTML Report
 
 ```bash
-npx playwright show-report
+npm run report
 ```
+
+---
+
+# First Test
+
+The starter kit includes a **Golden Login Test** to verify that the framework has been configured correctly.
+
+```text
+Open Login Page
+        │
+        ▼
+Enter Username
+        │
+        ▼
+Enter Password
+        │
+        ▼
+Login
+        │
+        ▼
+Verify Dashboard
+```
+
+If this test passes, the framework is ready for automation development.
 
 ---
 
 # Documentation
 
-See the documentation inside:
+Additional documentation is available in:
 
 ```text
 docs/
 ```
-
-Main documents
-
-```text
-docs/
-
-README.md
-
-architecture/
-
-workflow/
-
-standards/
-```
-
----
-
-# Roadmap
-
-Current Version
-
-```text
-v0.2.0
-```
-
-Next Version
-
-```text
-v0.3.0
-
-• Assertion Layer
-
-• Framework Entry
-
-• Bootstrap Documentation
-
-• Example Project
-```
-
-Long-term Goals
-
-```text
-v1.0.0
-
-Enterprise Ready
-
-Claude AI Ready
-
-Project Bootstrap Ready
-
-Production Ready
-```
-
----
-
-# Contributing
-
-Contributions, suggestions, and improvements are welcome.
-
-Please create an Issue or Pull Request before making major changes.
 
 ---
 
